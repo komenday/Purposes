@@ -1,0 +1,2 @@
+# Purposes
+Goals but stronger ;)
