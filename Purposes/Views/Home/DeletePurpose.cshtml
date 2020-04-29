@@ -1,0 +1,28 @@
+﻿@model Purpose
+@{
+    ViewData["Title"] = "ConfirmDeletePurpose";
+}
+
+<h1>ConfirmDeletePurpose</h1>
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>Name</dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>Description</dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+    </dl>
+
+    <div>
+        <form asp-controller="Home" asp-action="DeletePurpose" method="post">
+            <div class="form-group">
+                <input type="submit" class="btn btn-danger" value="Delete" />
+            </div>
+        </form>
+    </div>
+</div>

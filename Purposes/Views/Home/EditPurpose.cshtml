@@ -1,0 +1,39 @@
+﻿@model Purpose
+@{
+    ViewData["Title"] = "EditPurpose";
+}
+
+<h1>EditPurpose</h1>
+
+<form asp-action="EditPurpose" asp-antiforgery="true" asp-route-id="@Model.Id">
+    <div>
+        <div class="form-group">
+            <label asp-for="Name" class="control-label">Name</label>
+            <input type="text" asp-for="Name" class="form-control" placeholder="@Model.Name"/>
+            <span asp-validation-for="Name" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Description" class="control-label">Description</label>
+            <input type="text" asp-for="Description" class="form-control" placeholder="@Model.Description"/>
+        </div>
+        <div class="form-group">
+            <label asp-for="Importance" class="control-label">Importance</label>
+            <select asp-items="Html.GetEnumSelectList<Importance>()" asp-for="Importance" class="form-control">
+                <option selected>
+                    @Model.Importance
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label asp-for="Due" class="control-label">Due Date</label>
+            <input type="date" asp-for="Due" class="form-control" placeholder="@Model.Due"/>
+        </div>
+        <div class="form-group">
+            <label asp-for="IsCompleted" class="control-label">Does this purpose complete?</label>
+            <input type="checkbox" asp-for="IsCompleted" placeholder="@Model.IsCompleted"/>
+        </div>
+        <div class="form-group">
+            <input class="btn btn-warning" type="submit" value="Edit purpose" />
+        </div>
+    </div>
+</form>
