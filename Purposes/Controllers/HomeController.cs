@@ -32,7 +32,7 @@ namespace Purposes.Controllers
         {
             db.Purposes.Add(purpose);
             await db.SaveChangesAsync();
-            return RedirectToAction("Index");
+            return RedirectToActionPermanent("Index");
         }
 
         public async Task<IActionResult> EditPurpose(int? id)
@@ -51,7 +51,7 @@ namespace Purposes.Controllers
         {
             db.Purposes.Update(purpose);
             await db.SaveChangesAsync();
-            return RedirectToAction("Index");
+            return RedirectToActionPermanent("Index");
         }
 
         [HttpGet]

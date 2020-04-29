@@ -1,0 +1,15 @@
+﻿@model List<Purpose>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>@ViewBag.Type</h1>
+
+@foreach (var item in Model)
+{
+    <div class="purpose">
+        <purpose item="item" />
+        <a asp-action="EditPurpose" class="btn btn-light" asp-route-id="@item.Id">Edit</a>
+        <a asp-action="DeletePurpose" class="btn btn-light" asp-route-id="@item.Id">Delete</a>
+    </div>
+}
