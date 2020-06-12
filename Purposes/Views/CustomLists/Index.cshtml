@@ -1,0 +1,18 @@
+﻿@model CustomList
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>@Model.Name</h1>
+@if (Model.SelectedPurposes.Count > 0)
+{
+    @foreach (var item in Model.SelectedPurposes)
+    {
+        <div class="purpose">
+            <purpose item="item" />
+            <a asp-action="EditPurpose" asp-controller="Home" class="btn btn-light" asp-route-id="@item.Id">Edit</a>
+            <a asp-action="DeletePurpose" asp-controller="Home" class="btn btn-light" asp-route-id="@item.Id">Delete</a>
+            <a asp-action="RemovePurposeFromList" class="btn btn-light" asp-route-listId="@Model.Id" asp-route-purposeId="@item.Id">Remove from the list</a>
+        </div>
+    }
+}

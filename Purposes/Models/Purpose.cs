@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -17,5 +18,7 @@ namespace Purposes.Models
         public DateTime? Due { get; set; }
         public Importance Importance { get; set; } = Importance.Ordinary;
         public bool IsCompleted { get; set; }
+        //[BindNever]
+        public DateTime CreationDate { get; private set; } = DateTime.Now;
     }
 }

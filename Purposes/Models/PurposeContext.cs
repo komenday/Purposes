@@ -9,6 +9,7 @@ namespace Purposes.Models
     public class PurposeContext : DbContext
     {
         public DbSet<Purpose> Purposes { get; set; }
+        public DbSet<CustomList> CustomLists { get; set; }
 
         public PurposeContext(DbContextOptions options) : base(options)
         {

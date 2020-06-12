@@ -1,9 +1,9 @@
 ﻿@model Purpose
 @{
-    ViewData["Title"] = "ConfirmDeletePurpose";
+    ViewData["Title"] = "Confirm Delete Purpose";
 }
 
-<h1>ConfirmDeletePurpose</h1>
+<h1>Confirm delete purpose</h1>
 
 <div>
     <dl class="dl-horizontal">
@@ -19,7 +19,7 @@
     </dl>
 
     <div>
-        <form asp-controller="Home" asp-action="DeletePurpose" method="post">
+        <form asp-action="DeletePurpose" method="post">
             <div class="form-group">
                 <input type="submit" class="btn btn-danger" value="Delete" />
             </div>
