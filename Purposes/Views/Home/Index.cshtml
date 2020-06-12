@@ -1,16 +1,90 @@
-﻿@model List<Purpose>
+﻿@using Purposes.ViewModels
+@model GeneralViewModel
 @{
     ViewData["Title"] = "Home Page";
 }
 
-<a asp-action="CreatePurpose" class="btn btn-dark">Add purpose</a>
+<div class="btn-group btn-group-lg" role="group" aria-label="Menu">
+    <a class="btn btn-dark" asp-action="CreatePurpose">Add purpose</a>
+    <a class="btn btn-dark" asp-action="CreateCustomList" asp-controller="CustomLists">Add custom list</a>
+</div>
 
-@foreach (var item in Model)
+
+<div class="content">
+    <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        Search purpose
+    </button>
+</div>
+<div class="collapse content" id="collapseExample">
+    <form method="get">
+        <div class="form-inline">
+            <input name="name" value="@Model.FilterViewModel.SelectedName" class="form-control" />
+
+            <input type="submit" value="Search" class="btn btn-outline-dark" />
+        </div>
+    </form>
+</div>
+
+<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Sort by...
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" asp-action="Index"
+           asp-route-sortOrder="@(Model.SortViewModel.NameSort)"
+           asp-route-name="@(Model.FilterViewModel.SelectedName)">Name</a>
+        <a class="dropdown-item" asp-action="Index"
+           asp-route-sortOrder="@(Model.SortViewModel.DateSort)"
+           asp-route-name="@(Model.FilterViewModel.SelectedName)">Due Date</a>
+        <a class="dropdown-item" asp-action="Index"
+           asp-route-sortOrder="@(Model.SortViewModel.CreationSort)"
+           asp-route-name="@(Model.FilterViewModel.SelectedName)">Creation Date</a>
+        <a class="dropdown-item" asp-action="Index"
+           asp-route-sortOrder="@(Model.SortViewModel.ImportanceSort)"
+           asp-route-name="@(Model.FilterViewModel.SelectedName)">Importance</a>
+        <a class="dropdown-item" asp-action="Index"
+           asp-route-sortOrder="@(Model.SortViewModel.CompletedSort)"
+           asp-route-name="@(Model.FilterViewModel.SelectedName)">Completed or Not</a>
+    </div>
+</div>
+
+@foreach (var item in Model.Purposes)
 {
     <div class="purpose">
         <purpose item="item" />
-        <a asp-action="EditPurpose" class="btn btn-light" asp-route-id="@item.Id">Edit</a>
-        <a asp-action="DeletePurpose" class="btn btn-light" asp-route-id="@item.Id">Delete</a>
+        <div class="btn-group">
+            <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                More
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" asp-action="EditPurpose" asp-route-id="@item.Id">Edit</a>
+                <a class="dropdown-item" asp-action="DeletePurpose" asp-route-id="@item.Id">Delete</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" asp-controller="CustomLists" asp-action="AddPurposeToList" asp-route-id="@item.Id">Add to list</a>
+            </div>
+        </div>
     </div>
 }
 
+@if (Model.PageViewModel.HasPreviousPage)
+{
+    <a asp-action="Index"
+       asp-route-page="@(Model.PageViewModel.PageNumber - 1)"
+       asp-route-name="@(Model.FilterViewModel.SelectedName)"
+       asp-route-sortorder="@(Model.SortViewModel.Current)"
+       class="btn  btn-outline-dark">
+        <i class="glyphicon glyphicon-chevron-left"></i>
+        Previous
+    </a>
+}
+@if (Model.PageViewModel.HasNextPage)
+{
+    <a asp-action="Index"
+       asp-route-page="@(Model.PageViewModel.PageNumber + 1)"
+       asp-route-name="@(Model.FilterViewModel.SelectedName)"
+       asp-route-sortorder="@(Model.SortViewModel.Current)"
+       class="btn btn-outline-dark">
+        Next
+        <i class="glyphicon glyphicon-chevron-right"></i>
+    </a>
+}

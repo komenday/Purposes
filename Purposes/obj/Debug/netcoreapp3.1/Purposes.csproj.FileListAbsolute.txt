@@ -197,3 +197,6 @@ C:\Users\komen\source\repos\Purposes\Purposes\obj\Debug\netcoreapp3.1\Razor\View
 C:\Users\komen\source\repos\Purposes\Purposes\obj\Debug\netcoreapp3.1\Razor\Views\Home\EditPurpose.cshtml.g.cs
 C:\Users\komen\source\repos\Purposes\Purposes\obj\Debug\netcoreapp3.1\Razor\Views\Home\DeletePurpose.cshtml.g.cs
 C:\Users\komen\source\repos\Purposes\Purposes\obj\Debug\netcoreapp3.1\Razor\Views\SmartLists\Index.cshtml.g.cs
+C:\Users\komen\source\repos\Purposes\Purposes\obj\Debug\netcoreapp3.1\Razor\Views\CustomLists\CreateCustomList.cshtml.g.cs
+C:\Users\komen\source\repos\Purposes\Purposes\obj\Debug\netcoreapp3.1\Razor\Views\CustomLists\Index.cshtml.g.cs
+C:\Users\komen\source\repos\Purposes\Purposes\obj\Debug\netcoreapp3.1\Razor\Views\CustomLists\RemovePurposeFromList.cshtml.g.cs

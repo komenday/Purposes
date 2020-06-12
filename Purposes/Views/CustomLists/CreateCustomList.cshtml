@@ -1,0 +1,24 @@
+﻿@model CustomList
+@{
+    ViewData["Title"] = "Create custom list";
+}
+
+<h1>CreateCustomList</h1>
+
+<form asp-action="CreateCustomList" asp-antiforgery="true">
+    <div>
+        <div class="form-group">
+            <label asp-for="Name" class="control-label">Name</label>
+            <input type="text" asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" />
+        </div>
+        <div class="form-group">
+            <label asp-for="SelectedPurposes" class="control-label">Select purposes</label>
+            <select asp-for="SelectedPurposes" asp-items="ViewBag.AllPurposes" multiple="multiple">
+            </select>
+        </div>
+        <div class="form-group">
+            <input class="btn btn-success" type="submit" value="Add custom list" />
+        </div>
+    </div>
+</form>
